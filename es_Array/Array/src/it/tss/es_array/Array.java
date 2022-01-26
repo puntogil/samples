@@ -19,10 +19,12 @@ public class Array {
         //int [] input = {12,34,56,3,57,3,5,6,67,45};
         int[] input = generaArrayCasuale(50, 1000);
         ArrayTool.stampa(input);
-        ArrayTool.max(input);
-        ArrayTool.min(input);
-        ArrayTool.media(input);
+        System.out.println("Valore trovato: " + ArrayTool.ricerca(input, 5));
+        System.out.println("Valore massimo: " + ArrayTool.max(input));
+        System.out.println("Valore minimo: " + ArrayTool.min(input));
+        System.out.println("Valore medio: " + ArrayTool.media(input));
         ArrayTool.ordina(input);
+        ArrayTool.stampa(input);
     }
 
     /**

@@ -17,9 +17,9 @@ public class ArrayTool {
         System.out.println("");
     }
     
-    static void stampa(int numero) {
+    /**static void stampa(int numero) {
         System.out.println("trovato " + numero);
-    }
+    }**/
     
     static boolean ricerca(int numeri[], int numero) {
         boolean trovato = false;
@@ -28,7 +28,7 @@ public class ArrayTool {
                 trovato = true;
             }
         }
-        if (trovato == true) stampa(numero);
+        //if (trovato == true) stampa(numero);
         return trovato;
     }
 
@@ -38,7 +38,7 @@ public class ArrayTool {
             if (numeri[i] > massimo )
                 massimo  = numeri[i];
         }
-        stampa(massimo);
+        //stampa(massimo);
         return massimo;
     }
 
@@ -46,9 +46,9 @@ public class ArrayTool {
         int minimo = 0;
         for (int i = 0; i < numeri.length -1; i++) {
             if (numeri[i] < minimo )
-                minimo  = numeri[i];
+                minimo = numeri[i];
         }
-        stampa(minimo);
+        //stampa(minimo);
         return minimo;
     }
 
@@ -58,7 +58,7 @@ public class ArrayTool {
                 somma += numeri[i];
         }
         somma = somma/numeri.length;
-        stampa(somma);
+        //stampa(somma);
         return somma;
     }
 
@@ -73,6 +73,6 @@ public class ArrayTool {
                 }
             }  
         }
-        stampa(numeri);
+        //stampa(numeri);
     }
 }
