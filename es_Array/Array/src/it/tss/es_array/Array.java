@@ -24,6 +24,7 @@ public class Array {
         System.out.println("Valore minimo: " + ArrayTool.min(input));
         System.out.println("Valore medio: " + ArrayTool.media(input));
         ArrayTool.ordina(input);
+        System.out.println("Array ordinato: ");
         ArrayTool.stampa(input);
     }
 

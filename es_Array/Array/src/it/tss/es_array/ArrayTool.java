@@ -17,10 +17,6 @@ public class ArrayTool {
         System.out.println("");
     }
     
-    /**static void stampa(int numero) {
-        System.out.println("trovato " + numero);
-    }**/
-    
     static boolean ricerca(int numeri[], int numero) {
         boolean trovato = false;
         for (int i = 0; i < numeri.length -1; i++) {
@@ -28,7 +24,6 @@ public class ArrayTool {
                 trovato = true;
             }
         }
-        //if (trovato == true) stampa(numero);
         return trovato;
     }
 
@@ -38,12 +33,11 @@ public class ArrayTool {
             if (numeri[i] > massimo )
                 massimo  = numeri[i];
         }
-        //stampa(massimo);
         return massimo;
     }
 
     static int min(int numeri[]) {
-        int minimo = 0;
+        int minimo = numeri[0];
         for (int i = 0; i < numeri.length -1; i++) {
             if (numeri[i] < minimo )
                 minimo = numeri[i];
@@ -57,15 +51,14 @@ public class ArrayTool {
         for (int i = 0; i < numeri.length -1; i++) {
                 somma += numeri[i];
         }
-        somma = somma/numeri.length;
-        //stampa(somma);
+        somma = somma/numeri.length;;
         return somma;
     }
 
     static void ordina(int numeri[]) {
         int temp = 0;
-        for (int i = 0; i < numeri.length; i++) {
-            for (int j = 0; j < numeri.length; j++) {
+        for (int i = 0; i < numeri.length -1; i++) {
+            for (int j = 0; j < numeri.length -1; j++) {
                 if (numeri[i] > numeri[j]){
                     temp = numeri[i];
                     numeri[i] = numeri[j];
@@ -73,6 +66,5 @@ public class ArrayTool {
                 }
             }  
         }
-        //stampa(numeri);
     }
 }
