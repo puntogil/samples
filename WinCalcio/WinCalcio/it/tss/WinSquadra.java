@@ -4,6 +4,11 @@
  */
 package it.tss;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +26,7 @@ public class WinSquadra extends javax.swing.JDialog {
         initComponents();
         refresh();
         clear();
+        btnUpdate.setEnabled(false);
     }
 
     /**
@@ -58,7 +64,11 @@ public class WinSquadra extends javax.swing.JDialog {
         });
 
         btnUpdate.setText("UPDATE");
-
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         tblSquadre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,7 +80,20 @@ public class WinSquadra extends javax.swing.JDialog {
             new String [] {
                 "ID", "Nome", "Sede"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblSquadre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSquadreMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblSquadre);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,6 +169,26 @@ public class WinSquadra extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnNewActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        DefaultTableModel modeltable = (DefaultTableModel) tblSquadre.getModel();
+        int i = tblSquadre.getSelectedRow();
+
+        String oldString = modeltable.getValueAt(i, 0) + ";" + (String)modeltable.getValueAt(i, 1) + ";" + (String)modeltable.getValueAt(i, 2);
+        String newString = modeltable.getValueAt(i, 0) + ";" + txtNomeSquadra.getText() + ";" + txtNomeSede.getText();
+        modificaFile("/home/puntogil/GIL/samples/WinCalcio/WinCalcio/squadra.csv", oldString, newString);
+        clear();
+        refresh();
+        btnUpdate.setEnabled(false);
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void tblSquadreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSquadreMouseClicked
+        btnUpdate.setEnabled(true);
+        DefaultTableModel modeltable = (DefaultTableModel)tblSquadre.getModel();
+        int i = tblSquadre.getSelectedRow();
+        txtNomeSquadra.setText((String)modeltable.getValueAt(i, 1));
+        txtNomeSede.setText((String)modeltable.getValueAt(i, 2));
+    }//GEN-LAST:event_tblSquadreMouseClicked
+ 
     private void clear(){
         txtNomeSquadra.setText("");
         txtNomeSede.setText("");
@@ -166,6 +209,42 @@ public class WinSquadra extends javax.swing.JDialog {
         }
                 
     }
+    
+    static void modificaFile(String filePath, String oldString, String newString) {
+        File fileToBeModified = new File(filePath);
+        String oldContent = "";
+        BufferedReader reader = null;
+        FileWriter writer = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(fileToBeModified));
+            //Legge tutte le linee in input del file di testo passato come argomento
+            String line = reader.readLine();
+
+            while (line != null) {
+                oldContent = oldContent + line + System.lineSeparator();
+                line = reader.readLine();
+            }
+            // Sostituisce oldString con newString in oldContent
+            String newContent = oldContent.replaceAll(oldString, newString);
+            // Riscrive il file input con newContent
+            writer = new FileWriter(fileToBeModified);
+            writer.write(newContent);
+        } catch (IOException e) {
+              e.printStackTrace();
+              JOptionPane.showMessageDialog(null, "Non è possibile modificare la squadra:\n" + e.getMessage() + '\n', "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                //Chiude tutto
+                reader.close();
+                writer.close();
+            } catch (IOException e) {
+              e.printStackTrace();
+              JOptionPane.showMessageDialog(null, "Non è possibile modificare la squadra:\n" + e.getMessage() + '\n', "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
