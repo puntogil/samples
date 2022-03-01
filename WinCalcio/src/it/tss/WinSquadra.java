@@ -175,8 +175,8 @@ public class WinSquadra extends javax.swing.JDialog {
 
         String oldString = modeltable.getValueAt(i, 0) + ";" + (String)modeltable.getValueAt(i, 1) + ";" + (String)modeltable.getValueAt(i, 2);
         String newString = modeltable.getValueAt(i, 0) + ";" + txtNomeSquadra.getText() + ";" + txtNomeSede.getText();
-        modificaFile("/home/puntogil/GIL/samples/WinCalcio/WinCalcio/squadra.csv", oldString, newString);
-        clear();
+        modificaFile("/home/puntogil/GIL/samples/WinCalcio/squadra.csv", oldString, newString);
+        //clear();
         refresh();
         btnUpdate.setEnabled(false);
     }//GEN-LAST:event_btnUpdateActionPerformed

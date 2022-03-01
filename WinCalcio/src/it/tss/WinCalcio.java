@@ -101,7 +101,7 @@ public class WinCalcio extends javax.swing.JFrame {
             // genera file csv delle squadre
             //File file = new File("squadra.csv");
             //FileWriter myWriter = new FileWriter(file.getPath());
-            FileWriter myWriter = new FileWriter("/home/puntogil/GIL/samples/WinCalcio/WinCalcio/squadra.csv");
+            FileWriter myWriter = new FileWriter("/home/puntogil/GIL/samples/WinCalcio/squadra.csv");
             myWriter.write(testoDisplay);
             myWriter.close();
         } catch (IOException ex) {
@@ -122,7 +122,7 @@ public class WinCalcio extends javax.swing.JFrame {
 
        try {
             // genera file csv delle partite
-            FileWriter myWriter = new FileWriter("/home/puntogil/GIL/samples/WinCalcio/WinCalcio_/squadra.csv");
+            FileWriter myWriter = new FileWriter("/home/puntogil/GIL/samples/WinCalcio/partita.csv");
             //File file = new File("partita.csv");
             //FileWriter myWriter = new FileWriter(file.getPath());
             myWriter.write(testoDisplay);
@@ -138,7 +138,7 @@ public class WinCalcio extends javax.swing.JFrame {
 
             //IdSquadra;NomeSquadra;SedeSquadra\n
             //File filecsv = new File("squadra.csv");
-            Scanner lettore = new Scanner("/home/puntogil/GIL/samples/WinCalcio/WinCalcio/squadra.csv");
+            Scanner lettore = new Scanner("/home/puntogil/GIL/samples/WinCalcio/squadra.csv");
             int n = 1;
             while (lettore.hasNextLine()) {
                 String riga = lettore.nextLine();
@@ -163,7 +163,7 @@ public class WinCalcio extends javax.swing.JFrame {
         try {
 
             //File filecsv = new File("partita.csv");
-            Scanner lettore = new Scanner("/home/puntogil/GIL/samples/WinCalcio/WinCalcio/partita.csv");
+            Scanner lettore = new Scanner("/home/puntogil/GIL/samples/WinCalcio/partita.csv");
             int n = 1;
             while (lettore.hasNextLine()) {
                 String riga = lettore.nextLine();
