@@ -51,9 +51,6 @@ public class WinPartita  extends javax.swing.JDialog {
             rowData[4] = s.getPuntSqVisitatore();
             modeltable.addRow(rowData);
         }
-        
-        
-        
     }
     
     private void caricaDati(){
@@ -63,8 +60,8 @@ public class WinPartita  extends javax.swing.JDialog {
         for (Squadra s : WinCalcio.listasquadre) {
             nc += s.getNome() + "," ;
         }
-        DefaultComboBoxModel model = new DefaultComboBoxModel(nc.split(","));
-        DefaultComboBoxModel model1 = new DefaultComboBoxModel(nc.split(","));
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(nc.split(","));
+        DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>(nc.split(","));
         cmbxSquadraCasa.setModel(model);
         cmbxSquadraOspite.setModel(model1);
         DateTimeFormatter ddmmaa = DateTimeFormatter.ofPattern("dd/MM/yy");
