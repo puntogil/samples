@@ -49,6 +49,11 @@ public class WinSquadra extends javax.swing.JDialog {
         tblSquadre = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Squadre");
 
@@ -190,6 +195,10 @@ public class WinSquadra extends javax.swing.JDialog {
         txtNomeSquadra.setText((String)modeltable.getValueAt(i, 1));
         txtNomeSede.setText((String)modeltable.getValueAt(i, 2));
     }//GEN-LAST:event_tblSquadreMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        refresh();
+    }//GEN-LAST:event_formWindowActivated
  
     private void clear(){
         txtNomeSquadra.setText("");

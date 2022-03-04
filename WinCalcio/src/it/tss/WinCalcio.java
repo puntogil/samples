@@ -113,7 +113,7 @@ public class WinCalcio extends javax.swing.JFrame {
         
     public static void salvaPartitaCSV(){
        
-        String testoDisplay = "IDPartita;IDSquadraCasa;IDSquadraVisitarore;PuntiSquadraCasa;PuntiSquadraOspite;DatiPartita\n";
+        String testoDisplay = "IDPartita;IDSquadraCasa;IDSquadraVisitarore;PuntiSquadraCasa;PuntiSquadraOspite;DataPartita\n";
 
         for (Partita partita : torneo) {
             String info = partita.getInfo();
@@ -343,6 +343,8 @@ public class WinCalcio extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         refresh();
+        caricaTorneo();
+        caricaSquadra();
     }//GEN-LAST:event_formWindowActivated
 
     /**
